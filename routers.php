@@ -14,7 +14,7 @@ class router
         $controller .= 'Controller';
 
         // on recupere le 3eme index de l'url  si il est non vide . si vide on on prend par defaut cars 
-        $action=$explodeUri[2] ?? 'index';
+        $action=$explodeUri[2] ?? 'page';
 
         // on recupere le 4eme index de l'url si il est non vide . si vide on on prend par defaut Null
         $id=$explodeUri[3] ?? null;
