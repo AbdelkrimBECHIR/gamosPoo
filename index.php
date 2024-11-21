@@ -1,5 +1,7 @@
 <?php
-require('routeurs.php');
+require ('routeurs.php');
+require ('constant.php');
+require ('db.php');
 
 
 // on creer un routeur de class Routeur
