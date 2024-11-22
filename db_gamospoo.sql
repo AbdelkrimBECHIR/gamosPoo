@@ -6,7 +6,10 @@ USE db_Gamospoo;
 CREATE TABLE Utilisateurs (
     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
-    mot_de_passe VARCHAR(255) NOT NULL
+    prenom VARCHAR(100),
+    mot_de_passe VARCHAR(255) NOT NULL,
+    role ENUM('admin','utilisateur') NOT NULL
+    
 );
 
 -- Création de la table Voitures (qui sera référencée dans Disponibilites)
