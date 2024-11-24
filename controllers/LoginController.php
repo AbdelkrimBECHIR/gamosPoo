@@ -9,7 +9,7 @@ class LoginController{
     }
 
     public function page(){
-        $title='test';
+        
         require "views\header.php";
         require_once "views\login.html.php";
        
@@ -17,6 +17,10 @@ class LoginController{
             $email = filter_var(trim($_POST["user_mail"]), FILTER_SANITIZE_EMAIL);
             $password = trim($_POST["password"]);
             $errors = [];
+         
+            if (!preg_match("/^\d{3,6}$/", $password)) {
+              $errors[] = "le mot de passe doit seulement entre 3 et 6 chiffres";
+            }
           
             if (empty($email)) {
               $errors[] = " le mail doit etre renseigné";
@@ -27,7 +31,7 @@ class LoginController{
             }
           
             if (empty($password)) {
-              $errors[] = "le mot de passe doit etre rensiegné";
+              $errors[] = "le mot de passe doit etre renseigné";
             }
           
             if (!preg_match("/^\d{3,6}$/", $password)) {
@@ -36,7 +40,7 @@ class LoginController{
           
             if (!empty($errors)) {
               $_SESSION["error"] = $errors;
-              header("location:login.php");
+              header("location:/login");
               exit();
             }
             
@@ -48,7 +52,8 @@ class LoginController{
             if($user){
                 if (password_verify($_POST["password"], $user["mot_de_passe"])) {
                   $_SESSION["email"] = $user["email"];
-                  $_SESSION["role"] = $user["role"];             
+                  $_SESSION["role"] = $user["role"];  
+                  $_SESSION['prenom']=$user['prenom'];           
           
                   header("location:/login");
 

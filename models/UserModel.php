@@ -6,7 +6,7 @@ class UserModel {
     public int $id;
     public string $password;
     public string $email;
-    public string $prenom;
+    public string $pseudo;
     public string $role;
 
     public function getId() : int
@@ -18,9 +18,9 @@ class UserModel {
     {
         return $this->email;
     }
-    public function getPrenom() : string
+    public function getPseudo() : string
     {
-        return $this->prenom;
+        return $this->pseudo;
     }
 
     public function getPassword() : string
@@ -44,9 +44,9 @@ class UserModel {
 
         return $this;
     }
-    public function setPrenom(string $prenom) : self
+    public function setPseudo(string $pseudo) : self
     {
-        $this->prenom = $prenom;
+        $this->pseudo = $pseudo;
 
         return $this;
     }
