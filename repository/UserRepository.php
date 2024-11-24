@@ -30,11 +30,9 @@ class UserRepository
     $stmt->bindParam(':mot_de_passe', $hashedPassword, PDO::PARAM_STR);
     $stmt->bindValue(':role', 'utilisateur', PDO::PARAM_STR);
 
-     return $stmt->execute();
-        
-  
-    
+     return $stmt->execute();   
   }
 
-
+    
 }
+  
