@@ -1,9 +1,13 @@
 <?php
+
+session_start();
+
 require ('routers.php');
 require ('config/constant.php');
 require ('config/db.php');
 require ('config/models.php');
 require ('config/controllers.php');
+require ('config/repository.php');
 
 
 
@@ -19,6 +23,9 @@ $cont= new $controller($dbh);
 
 // on appel l'action du controller en recuperant la valeur du tableau 
 $action=$elements['action'];
+
+
+
 //on utilise la methode du controller pour appliquer l'action
 $cont->$action();
 
