@@ -1,4 +1,6 @@
 <?php 
+
+
 if(!empty ($_SESSION["error"])){
     $errors= $_SESSION["error"];
     foreach($errors as $error){
@@ -16,8 +18,8 @@ if (!empty($_SESSION['email'])){ ?>
 
     <nav>
         <ul>
-            <li><a href="reserver.php">Réserver</a></li>
-            <li><a href="profil.php">Mon Profil</a></li>
+            <li><a href="home">Réserver</a></li>
+            <li><a href="profil">Mon Profil</a></li>
             <li><a href="logout">Se déconnecter</a></li>
         </ul>
     </nav>
@@ -25,7 +27,7 @@ if (!empty($_SESSION['email'])){ ?>
 
     <form method="post">
         <label for="email">Email</label>
-        <input type="email" name="user_mail" id="email" required>
+        <input type="email" name="email" id="email" required>
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" required>
 

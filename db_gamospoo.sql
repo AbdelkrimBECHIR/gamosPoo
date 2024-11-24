@@ -6,7 +6,7 @@ USE db_Gamospoo;
 CREATE TABLE Utilisateurs (
     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
-    pseudo VARCHAR(100),
+    prenom VARCHAR(100),
     mot_de_passe VARCHAR(255) NOT NULL,
     role ENUM('admin','utilisateur') NOT NULL
     

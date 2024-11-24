@@ -13,8 +13,8 @@ class LoginController{
         require "views\header.php";
         require_once "views\login.html.php";
        
-        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["user_mail"]) && isset($_POST["password"])) {
-            $email = filter_var(trim($_POST["user_mail"]), FILTER_SANITIZE_EMAIL);
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
+            $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
             $password = trim($_POST["password"]);
             $errors = [];
          
@@ -45,25 +45,43 @@ class LoginController{
             }
             
            
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            $user=$this->userRepository->recupUserBdd($email,$hashedPassword);
-
+          
+            $user=$this->userRepository->recupUserBdd($email);
             if($user){
-                if (password_verify($_POST["password"], $user["mot_de_passe"])) {
+                if (password_verify($password, $user["mot_de_passe"])) {
                   $_SESSION["email"] = $user["email"];
                   $_SESSION["role"] = $user["role"];  
-                  $_SESSION['prenom']=$user['prenom'];           
-          
+                  $_SESSION['prenom']=$user['prenom'];   
+                  $_SESSION['userId']=$user['id_utilisateur'];   
+                  
+         
                   header("location:/login");
+                  exit();
 
                 } else {
-                  $this->userRepository->addUserBdd($email,$hashedPassword);
+                  $errors[]=" mot de passe incorrect";
+                  $_SESSION['error']=$errors;
+                  exit();
+
                 }
+
+            }else{
+
+              $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+              if($this->userRepository->addUserBdd($email,$hashedPassword)){
+               echo " profil crée avec succées, maintenant connectez vous.";
+                
+              }else{                            
+                $errors[]=" erreur d'inscription";
+                $_SESSION['error']=$errors;
+                header("location:/login");
+                exit();
+              }
             }
+        }
 
             require "views/footer.php";
-        }
+        
     }
 
-}
+  }
