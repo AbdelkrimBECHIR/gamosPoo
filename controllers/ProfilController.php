@@ -53,7 +53,7 @@ class ProfilController{
                       $_SESSION['prenom']=$user['prenom'];   
                       $_SESSION['userId']=$user['id_utilisateur'];  
                
-                echo "Le profil a été mis à jour avec succès.";
+                echo "Votre profil a été mis à jour avec succès.";
                 } else {
                 echo "Aucune modification effectuée ou erreur.";
                 }
@@ -62,6 +62,24 @@ class ProfilController{
 
 
         }
+
+        if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["deleteProfile"]) && isset($_SESSION["userId"])) {
+          $userId=$_SESSION['userId'];
+
+          if ($this->userRepository->delateUserBdd($userId)){
+            
+            session_unset();
+            session_destroy();
+            session_start();
+            $_SESSION['message']= "votre profil a bien été supprimé";
+
+            header("location:\login");
+            exit();        
+          }else{
+            echo "erreur de la suppression du profil";
+          }
+        }
+
         require "views/footer.php";
     }
 

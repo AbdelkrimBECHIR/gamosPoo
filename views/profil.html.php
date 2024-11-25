@@ -24,12 +24,12 @@ if (isset($_SESSION)){
     <a href="login">page d'accueil</a>
 
     <form  method="POST">
-        <div class="form-group">
+        <div >
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="prenom" value="<?php echo htmlentities($prenom); ?>" required>
         </div>
 
-        <div class="form-group">
+        <div>
             <label for="email">Email</label>
             <input type="email" id="email" name="email"value="<?php echo htmlentities($email); ?>" required>
         </div>
@@ -39,7 +39,7 @@ if (isset($_SESSION)){
         <button type="submit" name="updateProfile">Mettre à jour le profil</button>
     </form>
 
-    <form action="profile.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre profil et vos commandes ?');">
+    <form method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre profil et vos réservations ?');">
         <button type="submit" name="deleteProfile" style="background-color: red;">Supprimer mon profil</button>
     </form>
 </div>
