@@ -2,13 +2,13 @@
 
 session_start();
 
+// Utilisez des chemins relatifs
 require ('routers.php');
 require ('config/constant.php');
 require ('config/db.php');
 require ('config/models.php');
 require ('config/controllers.php');
 require ('config/repository.php');
-
 
 
 
