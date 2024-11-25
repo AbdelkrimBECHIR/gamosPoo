@@ -41,13 +41,22 @@ class UserRepository
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
 
-     $stmt->execute();
-    if ($stmt->rowCount() > 0) {
-      return true;  
-  } else {
-      return false; 
-  }
+    $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+        return true;  
+      } else {
+        return false; 
+      }
 
+    }
+
+    public function delateUserBdd($userId)
+    {
+      $query = "DELETE FROM utilisateurs WHERE id_utilisateur=:userId";
+      $stmt=$this->dbh->prepare($query);
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+      return $stmt->execute();
     }
   
 }

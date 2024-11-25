@@ -1,14 +1,19 @@
 <?php 
 
-
 if(!empty ($_SESSION["error"])){
     $errors= $_SESSION["error"];
     foreach($errors as $error){
         echo $error;
     }
-    unset($_SESSION["error"]);
-   
+    unset($_SESSION["error"]); 
 }
+
+if(!empty ($_SESSION["message"])){
+    $message= $_SESSION["message"];
+    echo $message;
+    unset($_SESSION["message"]);   
+}
+
 ?>
 <h1>BIENVENUE <?php if(isset($_SESSION['prenom'])){
     echo $_SESSION['prenom'];} ?></h1>
