@@ -15,8 +15,8 @@ if(!empty ($_SESSION["message"])){
 }
 
 ?>
-<h1>BIENVENUE <?php if(isset($_SESSION['prenom'])){
-    echo $_SESSION['prenom'];} ?></h1>
+<h2>BIENVENUE <?php if(isset($_SESSION['prenom'])){
+    echo $_SESSION['prenom'];} ?></h2>
 
 <?php
 if (!empty($_SESSION['email'])){ ?>

@@ -14,12 +14,11 @@ class LogoutController
     public function page() 
         
     {
-        require "views\header.php";
+      
         require "views\logout.html";
 
         $this->logoutRepository->logOut();
 
-        require "views/footer.php";
 
     }
 }

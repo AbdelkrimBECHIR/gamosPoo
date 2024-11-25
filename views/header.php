@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php $title ?></title>
+    <title><?php echo $title ?></title>
 </head>
 <body>
     
-    <h1>test header</h1>
+    <h1>GAMOS</h1>
     
 </body>
 </html>
