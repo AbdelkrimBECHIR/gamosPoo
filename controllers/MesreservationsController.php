@@ -9,8 +9,7 @@ class MesreservationsController{
     }
 
     public function page(){
-        
-        require "views\header.php";
+      
        
         $reservations=[];
 
@@ -21,6 +20,6 @@ class MesreservationsController{
         }
 
         require_once "views\mesReservation.html.php";    
-        require "views/footer.php";
+       
     }
 }

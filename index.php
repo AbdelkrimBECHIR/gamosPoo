@@ -11,9 +11,6 @@ require ('config/controllers.php');
 require ('config/repository.php');
 
 
-
-
-
 // on creer un routeur de class Routeur
 $router= new Router();
 // on instancie le tableau recuperer grace a get Controller en donnant en parametre l'uri
@@ -30,13 +27,21 @@ if ($controller === 'LogoutController') {
     $cont = new $controller($dbh);
 }
 
+
+$controller = str_replace('Controller', '', $controller);
+$title=$controller;
+include 'views/header.php';
+
+
 // on appel l'action du controller en recuperant la valeur du tableau 
 $action=$elements['action'];
 
-
-
 //on utilise la methode du controller pour appliquer l'action
 $cont->$action();
+
+
+
+include 'views/footer.php';
 
 
 
