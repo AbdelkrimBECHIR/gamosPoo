@@ -25,6 +25,7 @@ if (!empty($_SESSION['email'])){ ?>
         <ul>
             <li><a href="home">Réserver</a></li>
             <li><a href="profil">Mon Profil</a></li>
+            <li><a href="mesreservations">Mes réservations</a></li>
             <li><a href="logout">Se déconnecter</a></li>
         </ul>
     </nav>
