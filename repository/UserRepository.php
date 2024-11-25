@@ -50,13 +50,26 @@ class UserRepository
 
     }
 
+    public function deleteReservationsUser($userId)
+    {
+      $query = "DELETE FROM reservations WHERE id_utilisateur=:userId";
+      $stmt=$this->dbh->prepare($query);
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+      return $stmt->execute();
+    }
+
     public function delateUserBdd($userId)
     {
+      $this->deleteReservationsUser($userId);
+      
       $query = "DELETE FROM utilisateurs WHERE id_utilisateur=:userId";
       $stmt=$this->dbh->prepare($query);
       $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
 
       return $stmt->execute();
     }
+
+   
   
 }
