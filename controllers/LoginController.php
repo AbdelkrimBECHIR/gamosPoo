@@ -10,7 +10,10 @@ class LoginController{
 
     public function home(){
         
+<<<<<<< HEAD
        
+=======
+>>>>>>> a3ebf1a25457d398a53aa9b00b07dd0efb3c5b28
         require_once "views\login.html.php";
        
         if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
