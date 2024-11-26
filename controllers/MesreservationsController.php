@@ -8,9 +8,11 @@ class MesreservationsController{
         $this->mesReservationsRepository = new MesReservationsRepository($dbh);
     }
 
+
     public function home(){
         
         require "views\header.php";
+
        
         $reservations=[];
 
@@ -21,6 +23,6 @@ class MesreservationsController{
         }
 
         require_once "views\mesReservation.html.php";    
-        require "views/footer.php";
+       
     }
 }

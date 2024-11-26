@@ -3,6 +3,7 @@
 session_start();
 
 // Utilisez des chemins relatifs
+
 require 'routers.php';
 require 'config/constant.php';
 require 'config/db.php';
@@ -25,6 +26,16 @@ if (!class_exists($controller)) {
     die("Erreur : Le contrôleur $controller n'existe pas.");
 }
 
+
+
+// on creer un routeur de class Routeur
+$router= new Router();
+// on instancie le tableau recuperer grace a get Controller en donnant en parametre l'uri
+$elements=$router->getController($_SERVER['REQUEST_URI']);
+
+$controller=$elements['controller'];
+
+
 // Instancier le contrôleur
 if ($controller === 'LogoutController') {
     $logoutRepository = new LogoutRepository();
@@ -38,11 +49,29 @@ if (!method_exists($cont, $action)) {
     die("Erreur : La méthode $action n'existe pas dans le contrôleur $controller.");
 }
 
-// Passer le nom du contrôleur dans le titre
-$title = str_replace('Controller', '', $controller);
+$controller = str_replace('Controller', '', $controller);
+$title=$controller;
 include 'views/header.php';
+
+
+
+
 
 // Exécuter l'action
 $cont->$action();
 
+
+
+// on appel l'action du controller en recuperant la valeur du tableau 
+$action=$elements['action'];
+
+//on utilise la methode du controller pour appliquer l'action
+$cont->$action();
+
+
+
 include 'views/footer.php';
+
+
+
+
