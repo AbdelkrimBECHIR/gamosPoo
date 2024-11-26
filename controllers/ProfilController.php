@@ -10,7 +10,7 @@ class ProfilController{
         $this->userRepository = new UserRepository($dbh);
     }
 
-    public function page(){
+    public function home(){
         
         require "views\header.php";
         require_once "views\profil.html.php";

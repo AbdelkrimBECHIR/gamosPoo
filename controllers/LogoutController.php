@@ -11,7 +11,7 @@ class LogoutController
         $this->logoutRepository= $logoutRepository ;
     }
     
-    public function page() 
+    public function home() 
         
     {
         require "views\header.php";

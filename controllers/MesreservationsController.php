@@ -8,7 +8,7 @@ class MesreservationsController{
         $this->mesReservationsRepository = new MesReservationsRepository($dbh);
     }
 
-    public function page(){
+    public function home(){
         
         require "views\header.php";
        
