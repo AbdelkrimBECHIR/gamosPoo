@@ -8,7 +8,7 @@ class LoginController{
         $this->userRepository = new UserRepository($dbh);
     }
 
-    public function page(){
+    public function home(){
         
        
         require_once "views\login.html.php";
